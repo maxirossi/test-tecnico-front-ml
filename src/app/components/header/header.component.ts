@@ -29,7 +29,7 @@ export class MLHeaderComponent implements OnInit {
   {
     if (q != '')
     {
-      const route = `items/?q=${encodeURIComponent(this.q)}`;
+      const route = `items?q=${encodeURIComponent(this.q)}`;
       this.router.navigateByUrl(route);
     }
   }
