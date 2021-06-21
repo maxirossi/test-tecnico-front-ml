@@ -14,6 +14,7 @@ import { MlHomeComponent } from './pages/ml-home/ml-home.component';
 import { MlResultsComponent  } from './pages/ml-results/ml-results.component';
 import { MlProductComponent  } from './pages/ml-product/ml-product.component';
 import { MlResultsComponent404  } from './pages/ml-results-404/ml-results.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MlResultsComponent404  } from './pages/ml-results-404/ml-results.compon
     MlSearchInputComponent,
     MlResultsComponent,
     MlProductComponent,
-    MlHomeComponent
+    MlHomeComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
