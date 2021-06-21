@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
+import { MLHeaderComponent } from './components/header/header.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,7 +18,7 @@ import { MlResultsComponent404  } from './pages/ml-results-404/ml-results.compon
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    MLHeaderComponent,
     SearchResultsComponent,
     ProductDetailComponent,
     FooterComponent,
