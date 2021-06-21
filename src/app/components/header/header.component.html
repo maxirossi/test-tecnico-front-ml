@@ -6,7 +6,7 @@
           <div class="text align-self-center p-2">
             <!-- search -->
             <div class="center-element icon-ml-header">
-                <img src="../../../assets/img/icons/Logo_ML.png" alt="MercadoLibre" />
+                <a href="#"><img src="../../../assets/img/icons/Logo_ML.png" alt="MercadoLibre" (click)="goHome()" /></a>
             </div>
             <div class="center-element input-search-header">
                 <input type="text" 
@@ -20,9 +20,11 @@
                 spellcheck="false" 
                 autocomplete="off" 
                 tabindex="2"
+                [(ngModel)]="q"
+                (keyup.enter)="searchProduct()"
                 />
-                <button class="btn btn-outline-secondary btn-search-header" type="button" id="button-addon2">
-                    <div role="img" aria-label="Buscar" class="nav-icon-search">
+                <button class="btn btn-outline-secondary btn-search-header">
+                    <div role="img" aria-label="Buscar" class="nav-icon-search" (click)="handleClick($event)">
                         <img src="../../../assets/img/icons/ic_Search.png" alt="" />
                     </div>
                 </button>

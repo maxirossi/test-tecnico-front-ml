@@ -15,13 +15,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path : 'items/search/:search', 
+    path : 'items', 
     component : MlResultsComponent,
     pathMatch: 'full'
   },
   {
     path : 'items/:id', 
-    component : MlResultsComponent,
+    component : MlProductComponent,
     pathMatch: 'full'
   },
   {
