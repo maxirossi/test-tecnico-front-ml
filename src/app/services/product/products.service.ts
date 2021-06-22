@@ -26,6 +26,14 @@ export class ProductsService {
       )
   }
 
+  infoById( id : string = ''){
+    let endpoint = `api/v1/items/${id}/`;
+    return this.http.get<any>( endpoint, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandle)
+      )
+  }
+
     // Error handling
     errorHandle(error) {
       let errorMessage = '';

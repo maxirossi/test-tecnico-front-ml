@@ -10,14 +10,14 @@
                         <li class="search-result-item">
                             <div class="container-fluid">
                                 <div class="row">
-                                <div class="col-md-2 align-middle">
+                                <div class="col-md-6 align-middle">
                                     <div class="img-search-result-container align-middle mx-auto justify-content-center text-center card card-block d-table-cell align-middle">
                                         <a routerLink="/items/{{product.id}}" class="list-result-item-image-link">
                                             <img [src]="product.picture" [alt]="product.title">
                                         </a>
                                 </div>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-6">
                                     <div class="clear-fix"></div>
                                     <div class="list-result-item-state">{{product.state_name}}</div>
                                     <h2 class="list-result-item-price">$ {{product.price.amount}}

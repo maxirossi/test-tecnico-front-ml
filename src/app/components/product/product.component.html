@@ -4,19 +4,27 @@
         <div class="d-flex flex-column">
             <div class="text align-self-center p-2">
                 <!-- product -->
+                <ng-container *ngIf="!item">
+                    <div class="spinner-grow" role="status">
+                        <span class="sr-only"></span>
+                      </div>
+                </ng-container>
+                <ng-container *ngIf="item">
                 <div class="container-item-product">
                     <div class="container-fluid">
                         <div class="row">
                         <div class="col-md-9">
                             <div class="img-search-result">
-                                <img src="../../../assets/img/" alt="imagen principal">
+                                <img [src]="item.picture">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="clear-fix"></div>
-                            <div class="product-item-detail">Nuevo - <span class="product-item-n-sells"> 234 Vendidos </span></div>
-                            <h1 class="product-item-title">Deco Reverse Sombrero Oxford</h1>
-                            <h2 class="product-item-price">$ 1.980</h2>
+
+                            <div class="product-item-detail" *ngIf="item.condition == 'new'"> Nuevo </div>
+                            <div class="product-item-detail" *ngIf="item.condition != 'new'"> Usado </div>
+                            <h1 class="product-item-title">{{item.title}}</h1>
+                            <h2 class="product-item-price">$ {{item.price.amount}}</h2>
                             <button class="btn btn-primary btn-buy-ml"> Comprar </button>
                         </div>
                         </div>
@@ -26,12 +34,13 @@
                                 Descripción del producto
                             </div>
                             <div class="product-item-description-text">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                               {{ item.description }}
                             </div>
                         </div>
                     </div> 
                     </div>
                 </div>
+                </ng-container>
                 <!-- product -->
             </div>
         </div>

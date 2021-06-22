@@ -10,7 +10,9 @@
 <div class="clearfix"></div>
 
 <ng-container *ngIf="loading === true">
-Cargando resultados ...
+    <div class="spinner-grow" role="status">
+        <span class="sr-only"></span>
+      </div>
 </ng-container>
 
 <ng-container *ngIf="loading === false">
@@ -18,7 +20,9 @@ Cargando resultados ...
         <ml-results [arrProducts]="arrProducts"></ml-results>
     </ng-container>
     <ng-container *ngIf="arrProducts.length == 0">
-    Buscando ...
+        <div class="spinner-grow" role="status">
+            <span class="sr-only"></span>
+          </div>
     </ng-container>
 </ng-container>
 

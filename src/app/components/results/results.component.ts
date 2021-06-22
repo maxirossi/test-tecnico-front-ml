@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-//import {Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ml-results',
