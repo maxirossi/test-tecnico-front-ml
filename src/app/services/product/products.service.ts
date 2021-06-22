@@ -1,21 +1,45 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { ApiService } from '../api.service';
-import { CommomHeaders } from 'src/app/shared/httpHeaders/CommonHeaders';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError, timeout } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
   
+   // Http Headers
+   httpOptions = {
+    headers: new HttpHeaders(),
+  }
+
   constructor(
     private http: HttpClient,
-    private apiService: ApiService,
-    private headers : CommomHeaders,
   ) { }
 
-  getProduct(id: string) {
-    return this.apiService.getFz(`/api/v1/back/products/${id}`, this.headers.getStdHeaders())
+  search( search : string = ''){
+    let endpoint = `api/items?q=${search}`;
+    return this.http.get<any>( endpoint, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandle)
+      )
   }
+
+    // Error handling
+    errorHandle(error) {
+      let errorMessage = '';
+      if(error.error instanceof ErrorEvent) {
+        // Get client-side error
+        errorMessage = error.error.message;
+      } else {
+        // Get server-side error
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
+      console.log(errorMessage);
+      return throwError(errorMessage);
+   }
+  
+
+
 }

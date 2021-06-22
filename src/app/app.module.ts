@@ -9,7 +9,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MlSearchInputComponent } from './components/ml-search-input/ml-search-input.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MlHomeComponent } from './pages/ml-home/ml-home.component';
 import { MlResultsComponent  } from './pages/ml-results/ml-results.component';
 import { MlProductComponent  } from './pages/ml-product/ml-product.component';
@@ -18,6 +18,8 @@ import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.componen
 import { ResultsComponent } from './components/results/results.component';
 import { ProductComponent } from './components/product/product.component';
 
+/* services */
+import { ProductsService } from './services/product/products.service';
 
 @NgModule({
   declarations: [
@@ -32,14 +34,15 @@ import { ProductComponent } from './components/product/product.component';
     MlHomeComponent,
     BreadcrumbComponent,
     ResultsComponent,
-    ProductComponent
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

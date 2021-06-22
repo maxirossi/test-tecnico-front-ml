@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MLHeaderComponent } from '../../components/header/header.component';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../../services/product/products.service';
 
 @Component({
   selector: 'app-ml-results',
@@ -12,11 +13,11 @@ import { ActivatedRoute } from '@angular/router';
 export class MlResultsComponent implements OnInit {
 
   private search = '';
-
-  constructor(private activatedRoute: ActivatedRoute) {
+  arrProducts : Array<any> = [];
+  constructor(private activatedRoute: ActivatedRoute, private productsService : ProductsService) {
     this.activatedRoute.queryParams.subscribe(params => {
       let search = params['q'];
-      this.searchProduct = search;
+      this.searchProduct(search);
     });
   }
 
@@ -27,6 +28,26 @@ export class MlResultsComponent implements OnInit {
   {
     if (q != ''){
       this.search = q;
+      this.productsService.search(q)
+        .subscribe((res) => {
+          let productItems = res.data.results;
+          for (let i = 0; i < 4; i++){
+            let productItem = productItems[i];
+            let item = {
+              id : productItem.id,
+              title : productItem.title,
+              condition : productItem.condition,
+              shipping : productItem.shipping.free_shipping,
+              picture : productItem.thumbnail,
+                price : {
+                  currency : productItem.currency_id,
+                  amount : productItem.price,
+                  decimals : '00'
+                }
+            };
+            this.arrProducts.push(item);
+          }
+        });
     }else{
       this.search = '';
     }

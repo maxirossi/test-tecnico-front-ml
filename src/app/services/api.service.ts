@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {environment} from '@env/environment';
 import * as _ from 'lodash';
 import {Observable, of} from 'rxjs';
 import {retry} from 'rxjs/operators';
 import {Params} from '@angular/router';
-import * as objectToFormData from 'object-to-formdata';
 
 declare var $: any;
 
@@ -30,7 +28,7 @@ export class ApiService {
             if (url.charAt(0) === '/') {
                 url = url.replace('/', '');
             }
-            url = [environment.basePath, url].join('/');
+            url = ['http://localhost:3030', url].join('/');
         } else {
             url = url as string;
         }
