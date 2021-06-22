@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MLHeaderComponent } from '../../components/header/header.component';
+import { ProductComponent } from '../../components/product/product.component';
+import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-ml-product',

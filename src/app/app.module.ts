@@ -16,6 +16,7 @@ import { MlProductComponent  } from './pages/ml-product/ml-product.component';
 import { MlResultsComponent404  } from './pages/ml-results-404/ml-results.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { ResultsComponent } from './components/results/results.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ResultsComponent } from './components/results/results.component';
     MlProductComponent,
     MlHomeComponent,
     BreadcrumbComponent,
-    ResultsComponent
+    ResultsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
