@@ -14,10 +14,14 @@ export class MlResultsComponent implements OnInit {
 
   private search = '';
   arrProducts : Array<any> = [];
+  loading = true;
+  q : string = '';
+
   constructor(private activatedRoute: ActivatedRoute, private productsService : ProductsService) {
     this.activatedRoute.queryParams.subscribe(params => {
       let search = params['q'];
       this.searchProduct(search);
+      this.q = params['q'];
     });
   }
 
@@ -27,6 +31,7 @@ export class MlResultsComponent implements OnInit {
   private searchProduct(q : string) : void
   {
     if (q != ''){
+      this.arrProducts = [];
       this.search = q;
       this.productsService.search(q)
         .subscribe((res) => {
@@ -38,11 +43,11 @@ export class MlResultsComponent implements OnInit {
               title : productItem.title,
               condition : productItem.condition,
               shipping : productItem.shipping.free_shipping,
+              state_name : productItem.address.state_name,
               picture : productItem.thumbnail,
                 price : {
                   currency : productItem.currency_id,
                   amount : productItem.price,
-                  decimals : '00'
                 }
             };
             this.arrProducts.push(item);
@@ -51,6 +56,7 @@ export class MlResultsComponent implements OnInit {
     }else{
       this.search = '';
     }
+    this.loading = false;
   }
 
 }

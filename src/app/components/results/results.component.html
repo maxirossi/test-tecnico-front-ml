@@ -5,29 +5,31 @@
             <div class="text align-self-center p-2">
                 <!-- results -->
                 <div class="container-results">
-                    <ol class="search-results-container">
+                    <ol class="search-results-container" *ngFor="let product of arrProducts">
                         <!-- item -->
                         <li class="search-result-item">
                             <div class="container-fluid">
                                 <div class="row">
-                                <div class="col-md-2">
-                                    <div class="img-search-result">
-                                        <a routerLink="items/22" class="list-result-item-image-link">
-                                            <img src="../../../assets/img/" alt="">
+                                <div class="col-md-2 align-middle">
+                                    <div class="img-search-result-container align-middle mx-auto justify-content-center text-center card card-block d-table-cell align-middle">
+                                        <a routerLink="/items/{{product.id}}" class="list-result-item-image-link">
+                                            <img [src]="product.picture" [alt]="product.title">
                                         </a>
-                                    </div>
+                                </div>
                                 </div>
                                 <div class="col-md-10">
                                     <div class="clear-fix"></div>
-                                    <div class="list-result-item-state">Mendoza</div>
-                                    <h2 class="list-result-item-price">$ 1.980
+                                    <div class="list-result-item-state">{{product.state_name}}</div>
+                                    <h2 class="list-result-item-price">$ {{product.price.amount}}
+                                    <ng-container *ngIf="product.free_shipping">
                                         <span class="list-result-shipping">
                                             <img src="../../../assets/img/icons/ic_shipping.png" alt="Envío Full">
                                         </span>
+                                    </ng-container>
                                     </h2>
                                     <h1 class="list-result-item-title">
-                                        <a routerLink="/items/22" class="list-result-item-image-link">
-                                        Apple ipod Touch 5gb Negro
+                                        <a routerLink="/items/{{product.id}}" class="list-result-item-image-link">
+                                            {{product.title}}
                                         </a>
                                     </h1>
                                 </div>

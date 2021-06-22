@@ -8,7 +8,20 @@
 <!-- content -->
 <app-breadcrumb></app-breadcrumb>
 <div class="clearfix"></div>
-<ml-results></ml-results>
+
+<ng-container *ngIf="loading === true">
+Cargando resultados ...
+</ng-container>
+
+<ng-container *ngIf="loading === false">
+    <ng-container *ngIf="arrProducts.length > 0">
+        <ml-results [arrProducts]="arrProducts"></ml-results>
+    </ng-container>
+    <ng-container *ngIf="arrProducts.length == 0">
+    Buscando ...
+    </ng-container>
+</ng-container>
+
 <!-- .content -->
 </div>
 </div>
