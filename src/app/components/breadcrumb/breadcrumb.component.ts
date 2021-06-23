@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumb.component.sass']
 })
 export class BreadcrumbComponent implements OnInit {
+
+  urlMeli : string = environment.url_meli;
+
+  @Input() categories : Array<{ id: string, name: string }>;
 
   constructor() { }
 

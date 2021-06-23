@@ -16,6 +16,7 @@ export class MlResultsComponent implements OnInit {
   arrProducts : Array<any> = [];
   loading = true;
   q : string = '';
+  categories : Array<{ id:string, name:string }>;
 
   constructor(private activatedRoute: ActivatedRoute, private productsService : ProductsService) {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -35,9 +36,16 @@ export class MlResultsComponent implements OnInit {
       this.search = q;
       this.productsService.search(q)
         .subscribe((res) => {
+    
+          const pathFromRoot = res.data?.filters?.find((filter) => filter.id === "category")?.values[0]?.path_from_root;
+          this.categories = pathFromRoot;
           let productItems = res.data.results;
           for (let i = 0; i < 4; i++){
             let productItem = productItems[i];
+            if (productItem === undefined){
+              this.loading = false;
+              return [];
+            }
             let item = {
               id : productItem.id,
               title : productItem.title,

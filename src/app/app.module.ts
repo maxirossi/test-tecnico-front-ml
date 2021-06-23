@@ -17,9 +17,10 @@ import { MlResultsComponent404  } from './pages/ml-results-404/ml-results.compon
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { ResultsComponent } from './components/results/results.component';
 import { ProductComponent } from './components/product/product.component';
-
+import { SpinnerComponent } from './components/spinner/spinner.component';
 /* services */
 import { ProductsService } from './services/product/products.service';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ProductsService } from './services/product/products.service';
     BreadcrumbComponent,
     ResultsComponent,
     ProductComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

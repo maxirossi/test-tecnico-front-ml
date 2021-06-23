@@ -1,4 +1,5 @@
 import { Component, OnInit, Input  } from '@angular/core';
+import { SpinnerComponent } from '../../components/spinner/spinner.component';
 
 @Component({
   selector: 'ml-product',

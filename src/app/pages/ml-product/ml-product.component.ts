@@ -4,7 +4,7 @@ import { ProductComponent } from '../../components/product/product.component';
 import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ActivatedRoute} from '@angular/router';
 import { ProductsService } from '../../services/product/products.service';
-
+import { ProductInterface } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-ml-product',
@@ -32,7 +32,7 @@ export class MlProductComponent implements OnInit {
     this.productsService.infoById(id)
     .subscribe((res) => {
       let data = res.data.a;
-        let item = {
+        const item: ProductInterface = {
           "id": data.id,
           "condition" : data.condition,
           "picture" : data.pictures[0].secure_url,
@@ -41,10 +41,9 @@ export class MlProductComponent implements OnInit {
           "price": {
           "currency": data.currency_id,
           "amount": data.price,
-        }
+        } 
       }
       this.MLitem = item;
-      console.log('item =>', item);
     });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {Router} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'ml-header',
@@ -9,9 +10,15 @@ import {Router} from '@angular/router';
 })
 export class MLHeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
   q : string = '';
 
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
+    this.activatedRoute.queryParams.subscribe(params => {
+      let search = params['q'];
+      this.q = params['q'];
+    });
+  }
+ 
   ngOnInit(): void {
 
   }

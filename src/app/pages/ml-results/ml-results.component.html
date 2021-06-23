@@ -6,26 +6,19 @@
 <div class="d-flex flex-column">
 <div class="text align-self-center p-2">
 <!-- content -->
-<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb [categories]="categories"></app-breadcrumb>
 <div class="clearfix"></div>
-
 <ng-container *ngIf="loading === true">
-    <div class="spinner-grow" role="status">
-        <span class="sr-only"></span>
-      </div>
+   <ml-spinner></ml-spinner>
 </ng-container>
-
-<ng-container *ngIf="loading === false">
+<ng-container *ngIf="loading === false && arrProducts.length > 0">
     <ng-container *ngIf="arrProducts.length > 0">
         <ml-results [arrProducts]="arrProducts"></ml-results>
     </ng-container>
-    <ng-container *ngIf="arrProducts.length == 0">
-        <div class="spinner-grow" role="status">
-            <span class="sr-only"></span>
-          </div>
-    </ng-container>
 </ng-container>
-
+<ng-container *ngIf="arrProducts.length == 0">
+    <ml-spinner></ml-spinner>
+</ng-container>
 <!-- .content -->
 </div>
 </div>
